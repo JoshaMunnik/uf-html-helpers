@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "declaration": false,
+    "sourceMap": false,
+    "outDir": "./dist",
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "allowJs": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true
+  },
+  "exclude": [
+    "tests",
+    "dist",
+    "node_modules"
+  ],
+  "include" : [
+    "./src"
+  ]
+}

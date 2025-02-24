@@ -1,0 +1,36 @@
+{
+  "name": "uf-htmlhelpers",
+  "version": "1.0.58",
+  "description": "A compiled version of UFHtmlHelpers from @ultraforce/ts-dom-lib.",
+  "scripts": {
+    "build": "tsc && webpack",
+    "compile": "tsc",
+    "test": "jest",
+    "doc": "typedoc",
+    "pack": "webpack",
+    "watch": "webpack --watch"
+  },
+  "files": [
+    "dist",
+    "LICENSE.MD",
+    "README.md"
+  ],
+  "keywords": [
+    "javascript",
+    "utility"
+  ],
+  "main": "./dist/uf-htmlhelpers.js",
+  "type": "module",
+  "author": "Josha Munnik",
+  "license": "MIT",
+  "dependencies": {
+    "@ultraforce/ts-dom-lib": "^1.0.57"
+  },
+  "devDependencies": {
+    "terser-webpack-plugin": "^5.3.11",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.7.3",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
+  }
+}
