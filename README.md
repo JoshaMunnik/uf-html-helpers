@@ -85,7 +85,7 @@ missing, no css classes will be set.
 
 Add `data-uf-storage-id` to the table element to store the selected column choice in the local
 storage and use it when the page with table is shown again. The value of this attribute is used as 
-key to store the data with. Make sure to use an unique value for each table.
+key to store the data with. Make sure to use a unique value for each table.
 
 By default, the class uses the `textContent` from a `td` to get the value.
 Add `data-uf-sort-value` to a `td` to provide an alternative value to use when sorting.
@@ -205,7 +205,7 @@ The following data attributes can be added:
     a value.
 
     If `"auto"` is used and the selector points to a checkbox or radio button and no values have
-    been set, ['true'] is used for the values list.
+    been set, `true` is used for the values list.
 
 - `data-uf-toggle-property` = string (default = 'checked')
   The property of the input element to get the value from.
@@ -310,7 +310,7 @@ the first file in the list of selected files.
 
 ```html
 <input type="file" id="file" />
-<img data-uf-image-preview="#file" alt="image preview" />
+<img data-uf-image-preview="#file" alt="preview" src="" />
 <div>
   Image information:<br/> 
     name = <span data-uf-image-name="#file"></span>,<br/> 
@@ -385,3 +385,20 @@ will be updated.
 <a href="https://example.com" data-uf-share-hover="hover">Example</a>
 <a href="https://example.com" data-uf-share-hover="hover">Also example</a>
 ```
+
+## Load actions
+Add an action to an element that is performed if the document has been loaded.
+
+Add `data-uf-load-action` to an element with one of the following values:
+- `remove-from-dom`: Removes the element from the DOM.
+- `hide`: Hides the element using {@link UFHtmlHelper.showElement}.
+- `show`: Shows the element using {@link UFHtmlHelper.showElement}.
+- `toggle`: Shows the element if their display is set to none, hides them otherwise.
+- `toggle-class`: Toggles the classes set with `data-uf-load-data` at the element.
+- `remove-from-class`: Removes the classes set with `data-uf-load-data` from the element.
+- `add-to-class`: Adds the classes set with `data-uf-load-data` from the element.
+- `show-modal`: Shows the element as modal dialog. If the element is not a dialog element,
+  nothing happens.
+- 'close': Closes the element if it is a dialog element.
+
+Use `data-uf-load-data` to specify data used by some of the actions.
