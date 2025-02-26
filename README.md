@@ -116,6 +116,8 @@ Add `data-uf-click-action` to a clickable element with one of the following valu
 - `"show-non-modal"`: Shows the target(s) as non-modal dialog. If the target is not a dialog 
   element, nothing happens.
 - `"close"`: Closes the target. If the target is not a dialog element, nothing happens.
+- `"set-attribute"`: Sets the attribute specified in `data-uf-click-attribute` to the value
+  specified in `data-uf-click-data` at the target(s).
 
 Use `data-uf-click-target` to specify another target then element itself. The value can either
 be a dom selector or one of the predefined values:
@@ -129,6 +131,22 @@ The target can be a single element or multiple elements. If multiple elements ar
 action is applied to every element.
 
 Use `data-uf-click-data` to specify data used by some of the actions.
+
+Use `data-uf-click-attribute` to specify the attribute to set in case of the 
+`"set-attribute"` action.
+
+It is possible to specify multiple actions by adding a postfix to the data attributes:
+('-1', '-2', etc., till '-20'). The postfix should be added to all data attributes.
+
+```html
+<button
+  data-uf-click-action="hide" data-uf-click-target="_parent"
+  data-uf-click-action-1="hide" data-uf-click-target-1="#some-id"
+  data-uf-click-action-2="hide" data-uf-click-target-2="#another-id"
+>
+  Hide elements
+</button>
+```
 
 ## Styling actions
 
