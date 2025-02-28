@@ -174,7 +174,7 @@ clickable element is clicked, the following actions are performed:
 1. For every data attribute in the clickable element, the code checks if the dialog contains
    one or more child elements referencing the same data attribute. For each found element, if the
    element is an `<input>` or `<select>` the value of the data element gets assigned to the value 
-   property of the element.
+   or checked property of the element.
    Else the value of the data element gets assigned to the inner text of the found element.
    Data attributes starting with `data-uf-` are ignored.
 2. The dialog is shown.
