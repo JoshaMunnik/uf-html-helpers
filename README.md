@@ -94,12 +94,7 @@ Add `data-uf-sort-location` to a `tr` to specify the location of the row in the 
 of the following values: `"top"`, `"middle"` (default), `"bottom"`.
 If there are multiple table rows for a location, they will still be sorted within that location.
 
-During initialization the code checks every cell and stores the value that should be used to sort
-with. Add `data-uf-no-caching` to a `th` or `td` element to disable caching for this column or value
-and instead determine the value every time the cell is accessed while sorting. Use this data
-attribute when the contents of a cell might be changed some other script code.
-
-When the rows are resorted the class will dispatch an event `tableSorted` on the table element.
+When the rows are resorted the class will dispatch an event `"tableSorted"` on the `table` element.
 
 ## Click actions
 
