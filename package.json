@@ -1,6 +1,6 @@
 {
   "name": "uf-htmlhelpers",
-  "version": "1.0.69",
+  "version": "1.0.71",
   "description": "A compiled version of UFHtmlHelpers from @ultraforce/ts-dom-lib.",
   "scripts": {
     "build": "tsc && webpack",

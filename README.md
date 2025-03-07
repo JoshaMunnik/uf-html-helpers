@@ -114,6 +114,8 @@ one of the following action values:
 - `"close"`: Closes the target. If the target is not a dialog element, nothing happens.
 - `"set-attribute"`: Sets the attribute specified in `data-uf-event-attribute` to the value
   specified in `data-uf-event-data` at the target(s).
+- `"reload"`: Reloads the page. This action replaces the last history entry with the current page.
+  If the page as loaded after of a POST action, this will remove the POST data.
 
 Use `data-uf-event-events` to specify the events that should trigger the action. The value is one or
 multiple events separated by a space. This attribute is required; when missing, nothing happens.
