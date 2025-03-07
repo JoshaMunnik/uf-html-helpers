@@ -96,51 +96,65 @@ If there are multiple table rows for a location, they will still be sorted withi
 
 When the rows are resorted the class will dispatch an event `"tableSorted"` on the `table` element.
 
-## Click actions
+## Event actions
 
-Add `data-uf-click-action` to a clickable element with one of the following values:
+Add `data-uf-event-action` to an element to perform an action when certain events are triggered. Use
+one of the following action values:
 - `"remove-from-dom"`: Removes the target(s) from the DOM.
 - `"hide"`: Hides the target(s) ([see showing and hiding](#showing-and-hiding)).
 - `"show"`: Shows the target(s) ([see showing and hiding](#showing-and-hiding)).
 - `"toggle"`: Shows the target(s) if their display is set to none, hides them otherwise.
-- `"toggle-class"`: Toggles the classes set with `data-uf-click-data` at the target(s).
-- `"remove-from-class"`: Removes the classes set with `data-uf-click-data` from the target(s).
-- `"add-to-class"`: Adds the classes set with `data-uf-click-data` from the target(s).
+- `"toggle-class"`: Toggles the classes set with `data-uf-event-data` at the target(s).
+- `"remove-from-class"`: Removes the classes set with `data-uf-event-data` from the target(s).
+- `"add-to-class"`: Adds the classes set with `data-uf-event-data` from the target(s).
 - `"show-modal"`: Shows the target(s) as modal dialog. If the target is not a dialog element,
   nothing happens.
 - `"show-non-modal"`: Shows the target(s) as non-modal dialog. If the target is not a dialog 
   element, nothing happens.
 - `"close"`: Closes the target. If the target is not a dialog element, nothing happens.
-- `"set-attribute"`: Sets the attribute specified in `data-uf-click-attribute` to the value
-  specified in `data-uf-click-data` at the target(s).
+- `"set-attribute"`: Sets the attribute specified in `data-uf-event-attribute` to the value
+  specified in `data-uf-event-data` at the target(s).
 
-Use `data-uf-click-target` to specify another target then element itself. The value can either
-be a dom selector or one of the predefined values:
+Use `data-uf-event-events` to specify the events that should trigger the action. The value is one or
+multiple events separated by a space. This attribute is required; when missing, nothing happens.
+
+Use `data-uf-event-target` to specify another target then element itself. The value can either
+be a dom selector (for one or multiple elements) or one of the predefined values:
 - `"_parent"`: The parent element of the clickable element.
 - `"_next"`: The next sibling of the clickable element.
 - `"_previous"`: The previous sibling of the clickable element.
 - `"_grandparent"`: The parent element of the parent of the clickable element.
 - `"_dialog"`: The nearest parent dialog element that contains the clickable element.
 
-The target can be a single element or multiple elements. If multiple elements are selected, the
-action is applied to every element.
+Use `data-uf-event-data` to specify data used by some of the actions.
 
-Use `data-uf-click-data` to specify data used by some of the actions.
-
-Use `data-uf-click-attribute` to specify the attribute to set in case of the 
+Use `data-uf-event-attribute` to specify the attribute to set in case of the 
 `"set-attribute"` action.
 
 It is possible to specify multiple actions by adding a postfix to the data attributes:
 ('-1', '-2', etc., till '-20'). The postfix should be added to all data attributes.
 
+This helper also supports `data-uf-click-action`, `data-uf-click-target`, `data-uf-click-data`
+and `data-uf-click-attribute` to perform actions for `"click"` events.
+
 ```html
 <button
-  data-uf-click-action="hide" data-uf-click-target="_parent"
-  data-uf-click-action-1="hide" data-uf-click-target-1="#some-id"
-  data-uf-click-action-2="hide" data-uf-click-target-2="#another-id"
+  data-uf-event-action="hide" data-uf-event-events="click" data-uf-event-target="_parent"
+  data-uf-event-action-1="hide" data-uf-event-events-1="click" data-uf-event-target-1="#some-id"
+  data-uf-event-action-2="hide" data-uf-event-events-2="click" data-uf-event-target-2="#another-id"
 >
   Hide elements
 </button>
+```
+
+```html
+<dialog
+  data-uf-event-action="toggle" 
+  data-uf-event-events="open close"
+  data-uf-event-target="#indicator"
+>
+....
+</dialog>
 ```
 
 ## Styling actions
