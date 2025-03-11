@@ -122,22 +122,35 @@ multiple events separated by a space. This attribute is required; when missing, 
 
 Use `data-uf-event-target` to specify another target then element itself. The value can either
 be a dom selector (for one or multiple elements) or one of the predefined values:
+- `"_self"`: The clickable element itself (default unless action is `"close"`).
 - `"_parent"`: The parent element of the clickable element.
 - `"_next"`: The next sibling of the clickable element.
 - `"_previous"`: The previous sibling of the clickable element.
 - `"_grandparent"`: The parent element of the parent of the clickable element.
-- `"_dialog"`: The nearest parent dialog element that contains the clickable element.
+- `"_dialog"`: The nearest parent dialog element that contains the clickable element (default when
+  action is `"close"`).
+
+If `data-uf-event-target` is missing, the `"_self"` value is used as default unless the action
+is `"close"` than `"_dialog"` is used as default.
 
 Use `data-uf-event-data` to specify data used by some of the actions.
 
 Use `data-uf-event-attribute` to specify the attribute to set in case of the 
 `"set-attribute"` action.
 
-It is possible to specify multiple actions by adding a postfix to the data attributes:
-('-1', '-2', etc., till '-20'). The postfix should be added to all data attributes.
+Use `data-uf-event-state` to specify the state to check when listening for events that have
+a `newState` property. Use this attribute with the value "open" together with the "toggle" event
+to perform an action when for example a dialog is being opened.
 
-This helper also supports `data-uf-click-action`, `data-uf-click-target`, `data-uf-click-data`
-and `data-uf-click-attribute` to perform actions for `"click"` events.
+Use `data-uf-click-action`, `data-uf-click-target`, `data-uf-click-data` and
+`data-uf-click-attribute` as shortcuts for `"click"` events.
+
+Use `data-uf-load-action`, `data-uf-load-target`, `data-uf-load-data` and
+`data-uf-load-attribute` to perform actions when the document is loaded.
+
+It is possible to specify multiple actions by adding a postfix to the data attributes:
+('-1', '-2', etc., till '-20'). The postfix should be added to all data attributes. The postfix
+works for `data-uf-event-xxxx`, `data-uf-click-xxxx`, `data-uf-load-xxxx`,
 
 ```html
 <button
@@ -414,20 +427,3 @@ will be updated.
 <a href="https://example.com" data-uf-share-hover="hover">Example</a>
 <a href="https://example.com" data-uf-share-hover="hover">Also example</a>
 ```
-
-## Load actions
-Add an action to an element that is performed if the document has been loaded.
-
-Add `data-uf-load-action` to an element with one of the following values:
-- `remove-from-dom`: Removes the element from the DOM.
-- `hide`: Hides the element using {@link UFHtmlHelper.showElement}.
-- `show`: Shows the element using {@link UFHtmlHelper.showElement}.
-- `toggle`: Shows the element if their display is set to none, hides them otherwise.
-- `toggle-class`: Toggles the classes set with `data-uf-load-data` at the element.
-- `remove-from-class`: Removes the classes set with `data-uf-load-data` from the element.
-- `add-to-class`: Adds the classes set with `data-uf-load-data` from the element.
-- `show-modal`: Shows the element as modal dialog. If the element is not a dialog element,
-  nothing happens.
-- 'close': Closes the element if it is a dialog element.
-
-Use `data-uf-load-data` to specify data used by some of the actions.
