@@ -116,6 +116,11 @@ one of the following action values:
   specified in `data-uf-event-data` at the target(s).
 - `"reload"`: Reloads the page. This action replaces the last history entry with the current page.
   If the page as loaded after of a POST action, this will remove the POST data.
+- `"set-value"`: Sets the value of the target(s) to the value specified in `data-uf-event-data`.
+  The target(s) must be an input, textarea or select element. If no value is specified, the
+  target will be set to an empty string or unchecked state. To set checkbox to a checked state
+  use the values 'true', '1' or 'checked'. After setting the value, the code will fire a
+  `"change"` and (when applicable) an `"input"` event.
 
 Use `data-uf-event-events` to specify the events that should trigger the action. The value is one or
 multiple events separated by a space. This attribute is required; when missing, nothing happens.
@@ -197,8 +202,8 @@ be a selector of a dialog element (the selector should only return a single elem
 clickable element is clicked, the following actions are performed:
 1. For every data attribute in the clickable element, the code checks if the dialog contains
    one or more child elements referencing the same data attribute. For each found element, if the
-   element is an `<input>` or `<select>` the value of the data element gets assigned to the value 
-   or checked property of the element.
+   element is an `<input>`, `<select>` or `<textarea>` the value of the data element gets assigned 
+   to the value or checked property of the element.
    Else the value of the data element gets assigned to the inner text of the found element.
    Data attributes starting with `data-uf-` are ignored.
 2. The dialog is shown.
@@ -322,18 +327,6 @@ The value of `data-uf-manage-submit` is not used and can be set to anything.
   ...
 </form>
 ```
-
-### Form fields
-
-This helper can be used to set the value of one or more fields if a clickable element is clicked
-upon.
-
-Add `data-uf-set-field-selector` to the clickable element and `data-uf-set-field-value`
-with the value to assign. If `data-uf-set-field-value` is a not set, an empty string
-will be assigned or the checkbox/radio element will be unchecked.
-
-With checkbox/radio elements the following values will set the checked state to true:
-'true', '1', 'checked'. Any other value will set the checked state to false.
 
 ## Image preview
 
