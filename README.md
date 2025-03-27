@@ -232,6 +232,11 @@ enabled states based on input elements value and valid state.
 Use a combination of `data-uf-toggle-XXXX` at an element that should be updated. It alters the
 element depending on the conditions set with the data attributes.
 
+If a targeted form element is a radio button, this class will install listeners on all radio
+buttons with the same name. When a radio button fires a change event, the code will 
+dispatch a change event to all other radio buttons in the same group. This fixes the issue that
+radio buttons do not fire a change event when they are unselected.
+
 The following data attributes can be added:
 
 - `data-uf-toggle-type` = 
