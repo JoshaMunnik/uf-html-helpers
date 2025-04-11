@@ -151,6 +151,12 @@ Use `data-uf-event-state` to specify the state to check when listening for event
 a `newState` property. Use this attribute with the value "open" together with the "toggle" event
 to perform an action when for example a dialog is being opened.
 
+Use `data-uf-event-key` to specify the key that should be pressed to trigger the action.
+See https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key for possible values.
+
+Use `data-uf-event-prevent-default` to prevent the default action of the event if an action
+was triggered. The value of the attribute is ignored.
+
 Use `data-uf-click-action`, `data-uf-click-target`, `data-uf-click-data` and
 `data-uf-click-attribute` as shortcuts for `"click"` events.
 
