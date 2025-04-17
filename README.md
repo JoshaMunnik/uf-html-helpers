@@ -301,11 +301,23 @@ The following data attributes can be added:
   When the elements no longer match the condition, the css classes get removed.
 
 - `data-uf-toggle-condition` = `"any"`, `"all"` (default), `"none"`
+ 
   Determines the condition the elements must match. With `"any"` only one element must either be
   valid or be equal to the one of the specified values. With `"all"` all elements must either be
   valid or be equal to one of the specified values. `"none"` is the reverse of `"all"`, none of
   the elements must be valid or be equal to any of the specified values.
 
+- `data-uf-toggle-compare` = `equal` (default), `contain`, `inside`, `lt`, `lte`, `gt`, `gte`
+  
+  Determines how to compare the value of an element with the values:
+    - `equal` = the value of the element must be equal to one of the values.
+    - `contain` = part of the value of the element must equal one of the values (case incentive).
+    - `inside` = part of one of the values must equal the value of the element (case incentive).
+    - `lt` = the value of the element must be less than one of the values (numeric).
+    - `lte` = the value of the element must be less than or equal to one of the values (numeric).
+    - `gt` = the value of the element must be greater than one of the values (numeric).
+    - `gte` = the value of the element must be greater than or equal to one of the values (numeric).
+  
 - `data-uf-toggle-value` = string (single value)
   Alias for `data-uf-toggle-values`. If `data-uf-toggle-values` is also specified, this
   attribute will be ignored.
