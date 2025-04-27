@@ -447,3 +447,94 @@ will be updated.
 <a href="https://example.com" data-uf-share-hover="hover">Example</a>
 <a href="https://example.com" data-uf-share-hover="hover">Also example</a>
 ```
+
+## General filter
+
+This helper class adds support for a filter to show or hide children within some container.
+
+Create an input element with the attribute `data-uf-filter-input` containing a selector
+that selects one or more elements that contain child elements that should be shown or hidden
+based on the value of the input element.
+
+A child element is hidden if any part of `innerText` does not match the value of the input
+element (case-insensitive matching).
+
+Add the attribute `data-uf-no-filter` to a child element to skip it from filtering.
+
+Add the attribute `data-uf-filter-group` with some value to a child element to group the
+child elements using the same value. If any of the child elements in the group matches the
+filter, all the child elements in the group will be shown.
+
+A child element is hidden by adding the attribute `data-uf-filter-no-match` to the child element.
+
+This class will add a css style to hide all elements with that data attribute
+(using `display: none`).
+
+## Grid sorting
+
+This helper adds sorting capability to some container.
+
+Add `data-uf-grid-sorting` to a container element to add sorting of children support. The class
+assumes the children are organized in some sort of grid structure.
+
+A container using sorting has two groups of children:
+- control elements, that can be clicked upon to determine which element to sort on.
+- sortable group of elements that will be reordered within their parent container.
+
+Add `data-uf-sort-ascending` and `data-uf-sort-descending` attributes to the container
+to specify one or more css classes to add to the control element that has been selected to
+sort the data on. When one of the attributes is missing, no css classes will be set.
+
+Add `data-uf-storage-id` to the container element to store the selected controller choice in the
+local storage and use it when the page with the container is shown again. The value of this
+attribute is used as key to store the data with.
+
+Add `data-uf-sort-control` to child elements that are the control elements. The values of
+`data-uf-sort-ascending` and `data-uf-sort-descending` will be added to or removed from css
+classes of this element (even if there is a separate clickable child element). The value of
+this attribute can be one of the following:
+- `none` - to not sort the children
+- `text` - to sort the children as text
+- `number` - to sort the children as numbers
+- `date` - to sort the children as dates
+
+Add `data-uf-sort-button` to a child element of a control element to specify the element that
+can be clicked upon to sort the children. This attribute is optional, when missing the header
+element itself will be used as clickable element.
+
+Add `data-uf-sort-key` to specify an id for a control element. This attribute is optional, when
+missing the relative sibling index of the control element will be used. With relative indexes,
+the first control element has index 0, the second control element 1, etc. The key is used to
+link the data elements to the correct control element.
+
+The control elements can have sibling elements in between that do not use any of the attributes.
+These will be ignored, they are also not used when determining the relative sibling index.
+
+The class supports two different ways of sorting the children:
+- related sortable elements are placed in containers. The containers are reordered in the parent
+  depending on the selected control element. For example a table row with table data entries.
+- related sortable elements are siblings. All elements are placed in the same parent. The class
+  will reorder the elements in the parent keeping the siblings together.
+
+To use containers, add `data-uf-item-container` to each container. The containers should not
+have other elements in between them. The class will reorder the containers in the parent.
+
+To use siblings, add `data-uf-item-group` to the sibling elements. The value of the attribute
+determines which group the siblings belong to. Each group should use a unique value. Make sure
+the sibling elements do not have any other elements in between them. When reordering only
+the elements using `data-uf-item-group` are reordered.
+
+Add `data-uf-sort-key` to a sortable element to link it to one of the controls. When missing the
+relative sibling index of the element will be used. With `data-uf-item-group` the index is
+relative to the first element with a certain group value.
+
+By default, the class uses the `innerText` from the element to determine the value for.
+Add `data-uf-sort-value` to provide an alternative value to use when sorting.
+
+When the elements are resorted because of a click on one of the controls, the class will dispatch
+an event `"sorted"` at the container element.
+
+When elements are resorted (either the container elements or the grouped elements), the elements
+are reinserted at the first element inside the parent. Elements can have different parents;
+the elements with the same parent will be reordered within that parent starting at the position
+of the first element. This allows for data to be grouped and be sorted within their group.
