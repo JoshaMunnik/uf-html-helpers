@@ -519,10 +519,17 @@ The class supports two different ways of sorting the children:
 To use containers, add `data-uf-item-container` to each container. The containers should not
 have other elements in between them. The class will reorder the containers in the parent.
 
-To use siblings, add `data-uf-item-group` to the sibling elements. The value of the attribute
-determines which group the siblings belong to. Each group should use a unique value. Make sure
-the sibling elements do not have any other elements in between them. When reordering only
-the elements using `data-uf-item-group` are reordered.
+To use siblings, either set `data-uf-group-size` with the container element or
+add `data-uf-item-group` to the sibling elements.
+
+With `data-uf-group-size` the children (that are not using `data-uf-grid-control`,
+`data-uf-item-container` and `data-uf-item-group`) are split into groups using the value
+of `data-uf-group-size`.
+
+With `data-uf-item-group` the value of the attribute determines which group the siblings belong
+to. Each group should use a unique value. When using `data-uf-item-group` make sure the sibling
+elements do not have any other elements in between them. When reordering only the elements
+using `data-uf-item-group` are reordered.
 
 Add `data-uf-sort-key` to a sortable element to link it to one of the controls. When missing the
 relative sibling index of the element will be used. With `data-uf-item-group` the index is
