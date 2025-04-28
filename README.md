@@ -69,7 +69,7 @@ Upon loading the filter code will add a css style to hide all elements with that
 ### Sorting
 
 To add support sorting to a table, the following is required:
-- add `data-uf-sorting` to a `table` element to add sorting support.
+- add `data-uf-table-sorting` to a `table` element to add sorting support.
 - the table should contain at least one header row with `th` elements.
 - add `data-uf-header-row` attribute to the `tr` tag containing the `th` elements that should
   be clicked upon.
