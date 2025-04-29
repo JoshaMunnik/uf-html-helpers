@@ -520,7 +520,8 @@ To use containers, add `data-uf-item-container` to each container. The container
 have other elements in between them. The class will reorder the containers in the parent.
 
 To use siblings, either set `data-uf-group-size` with the container element or
-add `data-uf-item-group` to the sibling elements.
+add `data-uf-item-group` to the sibling elements. If both attributes are missing, the number
+of siblings per group will be based on the number of controls.
 
 With `data-uf-group-size` the children of the grid element (that are not using
 `data-uf-grid-control`, `data-uf-item-container` and `data-uf-item-group`) are split into
