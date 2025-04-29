@@ -522,9 +522,11 @@ have other elements in between them. The class will reorder the containers in th
 To use siblings, either set `data-uf-group-size` with the container element or
 add `data-uf-item-group` to the sibling elements.
 
-With `data-uf-group-size` the children (that are not using `data-uf-grid-control`,
-`data-uf-item-container` and `data-uf-item-group`) are split into groups using the value
-of `data-uf-group-size`.
+With `data-uf-group-size` the children of the grid element (that are not using
+`data-uf-grid-control`, `data-uf-item-container` and `data-uf-item-group`) are split into
+groups using the value of `data-uf-group-size`. It is also possible to place the child elements
+in a separate container (that is a child element of the grid). Add `data-uf-grid-body` to
+the container element that contains the children.
 
 With `data-uf-item-group` the value of the attribute determines which group the siblings belong
 to. Each group should use a unique value. When using `data-uf-item-group` make sure the sibling
