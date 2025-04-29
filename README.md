@@ -465,7 +465,13 @@ Add the attribute `data-uf-filter-group` with some value to a child element to g
 child elements using the same value. If any of the child elements in the group matches the
 filter, all the child elements in the group will be shown.
 
-A child element is hidden by adding the attribute `data-uf-filter-no-match` to the child element.
+Filterable elements can also be grouped via a container element. Add the attribute
+`data-uf-filter-container` to a container element. The container element is shown or hidden
+depending on if any of the children matches the filter. Children that use the `data-uf-no-filter`
+attribute are skipped.
+
+A child or container element is hidden by adding the attribute `data-uf-filter-no-match` to
+the child or container element.
 
 This class will add a css style to hide all elements with that data attribute
 (using `display: none`).
