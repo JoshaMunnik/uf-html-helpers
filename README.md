@@ -68,33 +68,15 @@ Upon loading the filter code will add a css style to hide all elements with that
 
 ### Sorting
 
-To add support sorting to a table, the following is required:
-- add `data-uf-table-sorting` to a `table` element to add sorting support.
-- the table should contain at least one header row with `th` elements.
-- add `data-uf-header-row` attribute to the `tr` tag containing the `th` elements that should
-  be clicked upon.
-- add `data-uf-sort-type` attribute to each `th` element that should be clicked upon. Use one
-  of the following values: `"text"`, `"date"`, `"number"`. If the attribute is not set, the column
-  will not be used for sorting the table.
-- the `th` element that contains a `data-uf-sort-type` attribute should also contain
-  a `button` child element. The sorting code will add a clicked listener to this button.
+Table sorting helper has been removed. Instead, use the grid sorting helper:
 
-Add `data-uf-sort-ascending` and `data-uf-sort-descending` attributes to the `table` element
-to specify one or more css classes to add to the `th` element that is used for sorting. When
-missing, no css classes will be set.
-
-Add `data-uf-storage-id` to the table element to store the selected column choice in the local
-storage and use it when the page with table is shown again. The value of this attribute is used as 
-key to store the data with. Make sure to use a unique value for each table.
-
-By default, the class uses the `textContent` from a `td` to get the value.
-Add `data-uf-sort-value` to a `td` to provide an alternative value to use when sorting.
-
-Add `data-uf-sort-location` to a `tr` to specify the location of the row in the table. Use one
-of the following values: `"top"`, `"middle"` (default), `"bottom"`.
-If there are multiple table rows for a location, they will still be sorted within that location.
-
-When the rows are resorted the class will dispatch an event `"tableSorted"` on the `table` element.
+- replace `data-uf-table-sorting`/`data-uf-sorting` with `data-uf-grid-sorting`
+- with each `th` element, replace `data-uf-sort-type` with `data-uf-sort-control` (keeping the value)
+- if the `th` element contains a `button` add `data-uf-sort-button` to the button element
+- to `tr` containing cells that should be used with sorting add `data-uf-item-container`
+- remove `data-uf-header-row`, `data-uf-sort-location` attributes
+- listen for `"sorted"` instead of `"tableSorted"` events
+- all other attributes are also supported by the grid sorting.
 
 ## Event actions
 
